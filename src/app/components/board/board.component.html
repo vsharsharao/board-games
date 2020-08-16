@@ -1,0 +1,15 @@
+<div class="board-layout">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let board of boards">
+      <div class="board-container" [routerLink]="[board.RouterLink]">
+        <img
+          [src]="board.ImagePath"
+          [alt]="board.BoardName"
+          [title]="board.BoardName"
+        />
+        <p class="board-label">{{ board.BoardName }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

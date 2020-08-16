@@ -1,0 +1,99 @@
+$border-color: rgba(237, 115, 107, 0.5);
+$player-size: 3em;
+
+body {
+  margin: 10px;
+  padding: 10px;
+}
+
+.border-common {
+  &:active {
+    // box-shadow: 0.5px 0.5px rgb(237, 115, 107);
+    transform: translateY(2px);
+    border-color: rgba(110, 11, 4, 0.5);
+  }
+  transform: rotate(2deg);
+}
+
+@media screen and (max-device-width: 480px) {
+  .game-table {
+    td {
+      width: 100px !important;
+      height: 100px !important;
+    }
+  }
+}
+
+.game-table {
+  td {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.border-full {
+  @extend .border-common;
+  border: 1px solid $border-color;
+}
+
+.border-top {
+  @extend .border-common;
+  border-top: 1px solid $border-color;
+}
+
+.border-right {
+  @extend .border-common;
+  border-right: 1px solid $border-color;
+}
+
+.border-left {
+  @extend .border-common;
+  border-left: 1px solid $border-color;
+}
+
+.border-bottom {
+  @extend .border-common;
+  border-bottom: 1px solid $border-color;
+}
+
+.player1-style {
+  position: relative;
+  left: 50%;
+  font-weight: bold;
+  font-style: italic;
+  color: green;
+  font-size: 3em;
+  &:before {
+    content: "x";
+  }
+}
+
+.player2-style {
+  position: relative;
+  left: 50%;
+  font-weight: bold;
+  font-style: italic;
+  color: tomato;
+  font-size: 3em;
+  &:before {
+    content: "o";
+  }
+}
+
+.player-select {
+  font-size: 1em;
+  margin: 5px;
+  font-weight: bold;
+  color: rgba(37, 54, 100, 0.5);
+}
+
+td {
+  border: 1px solid red;
+}
+
+.level-highlight {
+  box-shadow: 2px 2px grey;
+  color: #fff;
+  background-color: #117a8b;
+  border-color: #10707f;
+}

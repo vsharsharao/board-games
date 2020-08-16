@@ -1,0 +1,81 @@
+<div class="game-header"></div>
+<div class="game-body">
+  <div class="row">
+    <div class="offset-md-1 col-md-2 col-sm-1 mt-5">
+      <div *ngIf="!mode">
+        <button
+          class="btn btn-info"
+          [disabled]="!matchCompleted"
+          *ngIf="matchCompleted || level === difficultyLevel.Easy"
+          (click)="level = difficultyLevel.Easy"
+          [ngClass]="level === difficultyLevel.Easy ? 'level-highlight' : ''"
+        >
+          Easy
+        </button>
+        <button
+          class="btn btn-info"
+          [disabled]="!matchCompleted"
+          *ngIf="matchCompleted || level === difficultyLevel.Hard"
+          (click)="level = difficultyLevel.Hard"
+          [ngClass]="level === difficultyLevel.Hard ? 'level-highlight' : ''"
+        >
+          Hard
+        </button>
+      </div>
+    </div>
+    <div class="col-md-7 col-sm-10 mt-5">
+      <div class="mb-2">
+        <span class="d-inline player-select">Auto Mode</span>
+        <label class="switch">
+          <input
+            type="checkbox"
+            [(ngModel)]="mode"
+            [disabled]="!matchCompleted"
+          />
+          <span class="slider round"></span>
+        </label>
+        <span class="d-inline player-select">Two Player</span>
+      </div>
+      <table class="game-table d-inline" (click)="onTableClick($event)">
+        <tbody>
+          <tr *ngFor="let m of matrix.rows">
+            <td
+              *ngFor="let n of m.cols"
+              [attr.data]="getCellData(m.rowNumber, n)"
+            >
+              <div
+                *ngIf="
+                  checkPlayer1IsBound(getCellData(m.rowNumber, n));
+                  then player1
+                "
+              ></div>
+              <div
+                *ngIf="
+                  checkPlayer2IsBound(getCellData(m.rowNumber, n));
+                  then player2
+                "
+              ></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="loader-wrapper d-inline-block m-3">
+        <div class="loader"></div>
+        <div class="loader-text">{{ turnEnum[turn] }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #player1>
+  <span class="player1-style"> </span>
+</ng-template>
+<ng-template #player2>
+  <span class="player2-style"> </span>
+</ng-template>
+
+<ng-template #resultModal role="document" class="modal-dialog">
+  <div>
+    {{ result }}
+  </div>
+</ng-template>

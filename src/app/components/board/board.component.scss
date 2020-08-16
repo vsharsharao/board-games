@@ -1,0 +1,20 @@
+.board-layout {
+  padding: 50px;
+}
+
+.board-container {
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.board-label {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: rgba(37, 54, 100, 0.5);
+}
